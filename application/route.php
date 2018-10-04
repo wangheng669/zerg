@@ -9,13 +9,18 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-return [
-    '__pattern__' => [
-        'name' => '\w+',
-    ],
-    '[hello]'     => [
-        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-        ':name' => ['index/hello', ['method' => 'post']],
-    ],
+use think\Route;
 
-];
+Route::get('banner/:id','api/v1.Banner/getBanner');
+Route::get('theme/:id','api/v1.Theme/getThemeDetail',[],['id'=>'\d+']);
+Route::get('theme','api/v1.Theme/getThemeList');
+Route::get('product/:id','api/v1.Product/getProductDetail',[],['id'=>'\d+']);
+Route::get('product/category/:id','api/v1.Product/getProductInCategory');
+Route::get('product','api/v1.Product/getRecent');
+Route::get('category','api/v1.Category/getCategory');
+Route::post('token/user','api/v1.Token/getToken');
+Route::post('address','api/v1.Address/createOrUpdate');
+Route::post('order/:id','api/v1.Order/getOrderDetail',[],['id'=>'\d+']);
+Route::post('order/place','api/v1.Order/placeOrder');
+Route::post('pay','api/v1.Pay/preOrder');
+Route::post('pay/notify','api/v1.Pay/receiveNotify');
