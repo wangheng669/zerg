@@ -6,6 +6,7 @@ use app\api\controller\BaseController;
 use app\api\validate\AddressNew;
 use app\api\service\Token as TokenService;
 use app\api\model\User as UserModel;
+use app\api\model\UserAddress;
 use app\lib\exception\SuccessMessage;
 
 class Address extends BaseController
@@ -15,6 +16,8 @@ class Address extends BaseController
         'checkExclusiveScope' => ['only' => 'createorupdate'],
     ];
 
+
+    // 更新地址
     public function createOrUpdate()
     {
         $validate = new AddressNew();
@@ -29,4 +32,13 @@ class Address extends BaseController
         }
         return new SuccessMessage();
     }
+
+    // 获取用户地址
+    public function getAddress()
+    {
+        $uid = TokenService::getCurrentUid();
+        $address = UserAddress::getAddressUID($uid);
+        return $address;
+    }
+
 }

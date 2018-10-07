@@ -5,7 +5,7 @@ namespace app\api\model;
 class Theme extends BaseModel
 {
 
-    protected $hidden = ['delete_time','update_time','id','head_img_id','topic_img_id'];
+    protected $hidden = ['delete_time','update_time','head_img_id','topic_img_id'];
 
     // 关联image表
     public function headImg()
@@ -36,7 +36,7 @@ class Theme extends BaseModel
     // 获取专题详情
     public static function getThemeByID($id)
     {
-        $theme = self::with(['products'])->find($id);
+        $theme = self::with(['products','topIcImg'])->find($id);
         return $theme;
     }
 

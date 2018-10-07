@@ -85,6 +85,7 @@ class Order{
                 'order_id' => $order->id,
                 'order_no' => $order->order_no,
                 'create_time' => $order->create_time,
+                'pass' => true,
             ];
         }catch(Exception $e){
             Db::rollback();
@@ -154,7 +155,7 @@ class Order{
         }
         if($pIndex==-1){
             throw new ProductException([
-                '' => '商品不存在,订单创建失败',
+                'msg' => '商品不存在,订单创建失败',
             ]);
         }else{
             $product = $products[$pIndex];
@@ -175,7 +176,7 @@ class Order{
         foreach($this->oProducts as $v){
             array_push($oPIDs,$v['product_id']);
         }
-        $products = ProductModel::all($oPIDs)->visible(['id','price','stock','name','main_img_url'])->toArray();
+        $products = ProductModel::all($oPIDs);
         return $products;
     }
 

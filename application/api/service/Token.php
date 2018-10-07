@@ -5,6 +5,7 @@ namespace app\api\service;
 use app\lib\exception\ForbiddenException;
 use app\lib\exception\TokenException;
 use app\lib\enum\ScopeEnum;
+use think\Cache;
 
 class Token{
 
@@ -70,6 +71,15 @@ class Token{
             throw new ForbiddenException([
                 'msg' => '权限不足'
             ]);
+        }
+        return true;
+    }
+
+    public static function verifyToken($token)
+    {
+        $exist = Cache::get($token);
+        if(!$exist){
+            return false;
         }
         return true;
     }

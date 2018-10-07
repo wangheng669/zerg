@@ -4,7 +4,7 @@ namespace app\api\model;
 
 class Product extends BaseModel
 {
-    protected $hidden = ['create_time','delete_time','id','img_id','pivot','from','summary','update_time'];
+    protected $hidden = ['create_time','delete_time','img_id','pivot','from','summary','update_time'];
 
 
     // 关联property

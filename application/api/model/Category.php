@@ -5,7 +5,7 @@ namespace app\api\model;
 class Category extends BaseModel
 {
 
-    protected $hidden = ['delete_time','id','topic_img_id','update_time'];
+    protected $hidden = ['delete_time','topic_img_id','update_time'];
 
     // 关联image表
     public function topIcImg()

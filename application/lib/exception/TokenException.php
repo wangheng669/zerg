@@ -6,7 +6,7 @@ class TokenException extends BaseException{
     
     public $msg = 'token无效';
 
-    public $code = 404;
+    public $code = 401;
 
     public $errorCode = 70000;
 }
