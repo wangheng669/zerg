@@ -72,6 +72,7 @@ class Pay{
         {
             Log::record($wxOrder,'error');
             Log::record('获取预支付订单失败','error');
+            return false;
         }
         $this->recordPreOrder($wxOrder);
         // 获取签名

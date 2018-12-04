@@ -145,6 +145,7 @@ class Order{
             'count' => 0,
             'haveStock' => false,
             'name' => '',
+            'main_img_url' => '',
         ];
         $products = $this->products;
         $pIndex = -1;
@@ -164,6 +165,7 @@ class Order{
                 $productStatus['haveStock'] = true;
             }
             $productStatus['count'] = $oProduct['count'];
+            $productStatus['main_img_url'] = $product['main_img_url'];
             $productStatus['totalPrice'] = $oProduct['count']*$product['price'];
         }
         return $productStatus;
